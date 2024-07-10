@@ -1,6 +1,7 @@
 package com.naruto.testbaidulocation
 
 import android.app.Application
+import com.baidu.location.LocationClient
 import com.baidu.mapapi.SDKInitializer
 
 /**
@@ -9,9 +10,11 @@ import com.baidu.mapapi.SDKInitializer
  * @CreateDate 2022/2/10 0010
  * @Note
  */
-class MyApplication:Application() {
+class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        SDKInitializer.initialize(this)
+        SDKInitializer.setAgreePrivacy(applicationContext, true)
+        SDKInitializer.initialize(applicationContext)
+        LocationClient.setAgreePrivacy(true)
     }
 }
